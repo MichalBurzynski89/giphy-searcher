@@ -38,7 +38,7 @@ export default {
     handleSubmit() {
       if (!this.searchValue) return;
       fetch(
-        `http://api.giphy.com/v1/gifs/search?q=${
+        `https://api.giphy.com/v1/gifs/search?q=${
           this.searchValue
         }&api_key=${API_KEY}&limit=100`
       )
@@ -78,7 +78,7 @@ export default {
     }
   },
   created() {
-    fetch(`http://api.giphy.com/v1/gifs/trending?api_key=${API_KEY}&limit=80`)
+    fetch(`https://api.giphy.com/v1/gifs/trending?api_key=${API_KEY}&limit=80`)
       .then(res => {
         if (res.ok) {
           this.isLoaded = true;
