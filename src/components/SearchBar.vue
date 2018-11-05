@@ -1,8 +1,8 @@
 <template>
   <div class="wrapper">
     <h1 class="title">Giphy Searcher</h1>
-    <form class="search-form">
-      <input type="search" placeholder="Enter a word or phrase..." class="search-form__input" id="searchInput">
+    <form v-on:submit.prevent="onSubmit" class="search-form">
+      <input type="search" placeholder="Enter a word or phrase..." v-on:input="onInput" v-bind:value="value" class="search-form__input" id="searchInput">
       <button type="submit" class="search-form__button">Search</button>
     </form> 
   </div>
@@ -10,7 +10,21 @@
 
 <script>
 export default {
-  name: "SearchBar"
+  name: "SearchBar",
+  props: {
+    onSubmit: {
+      type: Function,
+      required: true
+    },
+    onInput: {
+      type: Function,
+      required: true
+    },
+    value: {
+      type: String,
+      required: true
+    }
+  }
 };
 </script>
 
@@ -31,6 +45,10 @@ export default {
 
     @media (min-width: 1024px) {
       font-size: 56px;
+    }
+
+    @media (min-width: 1600px) {
+      font-size: 80px;
     }
   }
 }
@@ -64,6 +82,11 @@ export default {
       font-size: 20px;
       border-width: 3px;
     }
+
+    @media (min-width: 1600px) {
+      padding: 16px 24px;
+      font-size: 24px;
+    }
   }
 
   .search-form__button {
@@ -84,6 +107,10 @@ export default {
     @media (min-width: 1024px) {
       font-size: 20px;
       padding: 0 16px;
+    }
+
+    @media (min-width: 1600px) {
+      font-size: 24px;
     }
   }
 }
